@@ -1,5 +1,6 @@
 package com.oleksandr.kafka;
 
+import com.oleksandr.common.notification.NotificationRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -8,9 +9,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class KafkaProducer {
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, NotificationRequest> kafkaTemplate;
 
-    public void sendMessage(String message){
+    public void sendMessage(NotificationRequest message){
         kafkaTemplate.send("mailNotifications", message);
     }
 

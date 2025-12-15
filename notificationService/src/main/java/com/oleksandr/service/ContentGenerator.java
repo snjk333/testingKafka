@@ -25,7 +25,7 @@ public class ContentGenerator {
         Map<String, Object> model = new HashMap<>();
 
         model.put("nameOfClient", userForMailDTO.name());
-        model.put("title", properties.get("title"));
+        //model.put("title", properties.get("title"));
 
         try {
             configuration.getTemplate("register.ftlh")
