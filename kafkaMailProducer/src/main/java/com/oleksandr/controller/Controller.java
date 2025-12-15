@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import static com.oleksandr.common.enums.MAIL_TYPE.REGISTRATION_CONFIRM;
 
@@ -20,7 +22,7 @@ public class Controller {
 
     @PostMapping("/sendMessage")
     public void sendMessage(NotificationRequest message){
-        kafkaMailProducer.sendMessage(message);
+        kafkaMailProducer.sendMessage(message, 1);
     }
 
     @PostMapping("/testMessage")
@@ -30,7 +32,9 @@ public class Controller {
                 REGISTRATION_CONFIRM,
                 Collections.emptyMap()
         );
-        kafkaMailProducer.sendMessage(message);
+        for(int i = 0; i < 10; i++){
+            kafkaMailProducer.sendMessage(message, i);
+        }
     }
 
 }

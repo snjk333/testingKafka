@@ -11,8 +11,8 @@ public class KafkaProducer {
 
     private final KafkaTemplate<String, NotificationRequest> kafkaTemplate;
 
-    public void sendMessage(NotificationRequest message){
-        kafkaTemplate.send("mailNotifications", message);
+    public void sendMessage(NotificationRequest message, int i){
+        kafkaTemplate.send("mailNotifications", String.valueOf(i) ,message);
     }
 
 }

@@ -14,6 +14,7 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = "mailNotifications", groupId = "mail_consumer")
     public void listen(NotificationRequest message){
+        System.out.println("I get message.");
         mailService.sendEmail(message);
     }
 
